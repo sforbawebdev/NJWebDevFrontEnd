@@ -1,0 +1,50 @@
+@import "../../global/parts";
+
+.project-modal {
+    background: white;
+    padding-top: _toVW(50);
+    padding-bottom: _toVW(100);
+    width: 100%;
+}
+
+.project-modal__title-row, .project-modal__content-row {
+    @include _container;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 80vw;
+    @include _minWidthMobile {     
+        flex-direction: row;
+    }
+}
+.project-modal__carousel {
+    border-radius: 10px;;
+    height: _toVW(1500);
+    width: 100%;
+    @include _minWidthMobile {    
+        width: _toVW(683);
+        height: _toVW(510);
+    }
+}
+.project-modal__carousel_item {
+    border: 1px solid grey;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        max-width: 80%;
+    }
+}
+.project-modal__description {
+    width: 100%;
+    padding-left: _toVW(60);
+    a {
+        color: inherit;
+        
+    }
+    @include _minWidthMobile {    
+        width: _toVW(683);
+    }
+}

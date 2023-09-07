@@ -1,0 +1,87 @@
+@import "../global/parts";
+
+.client-list-wrap {
+    width: 70vw;
+    @include _minWidthTablet {
+        width: 45vw;
+    }
+    .client-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .client-card__copy {
+            @include _Lato;
+            @include _convertVW(padding-bottom, 44px);
+            color: $offwhite;
+            font-style: italic;
+            font-size: clamp(16px, fluid-type(20px, 1920px), 20px);
+            text-align: center;
+            position: relative;
+
+            // &::before {
+            //     content: open-quote;
+            //     font-size: 60px;
+            //     position: absolute;
+            //     left: 0px;
+            //     top: -10px;
+            // }
+            // &::after {
+            //     content: close-quote;
+            //     font-size: 60px;
+            //     position: absolute;
+            //     right: 0px;
+            //     bottom: -10px;
+            // }
+        }
+        .client-card__image {
+            background: $footergrey;
+            border-radius: 50%;
+            height: 120px;
+            width: 120px;
+            @include _convertVW(margin-bottom, 31px);
+        }
+        .client-card__person, .client-card__title {
+            text-align: center;
+            @include _convertVW(padding-bottom, 13px);
+        }
+        .client-card__person {
+            font-size: 18px;
+        }
+        .client-card__social-list {
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            list-style-type: none;
+            width: 100%;
+        }
+        .client-card__social-list-item {
+            position: relative;
+            margin: 0px 10px;
+        }
+        .client-card__social-link {
+            @include _hoverAnimation;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            svg {
+                height: 20px !important;
+                width: 20px !important;
+                * {
+                    fill: $white;
+    
+                }
+            }
+        }
+        .client-card__icon{     
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

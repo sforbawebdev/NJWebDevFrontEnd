@@ -1,0 +1,29 @@
+@import "../global/parts";
+
+.contact {
+    @include _convertVW(padding-top, 110px);
+    @include _convertVW(padding-bottom, 126px);
+    color: $textgrey;
+    background: $offwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .contact__title {
+        margin-bottom: 1.8vw;
+        padding-bottom: 1.9vw;
+        @include _titleAfterLine($textgrey);
+    }
+    .contact__content {
+        @include _container;
+        position: relative;
+        z-index: 2;
+    }
+    .contact__copy {
+        text-align: center;
+    }
+    .contact__form {
+        max-width: 665px;
+        margin: 0 auto;
+    }
+}

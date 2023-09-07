@@ -1,0 +1,41 @@
+@import "../global/parts";
+
+.home {
+    color: $white;
+    background: $darkgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .home__title {
+        font-size: clamp(45px, fluid-type(72px, 1920px), 72px);
+    }
+    .home__bg {
+        position: absolute;
+        height: 100%;
+        width:100%;
+        top: 0;
+        left: 0;
+    }
+    .home__content {
+        @include _container;
+        position: relative;
+        z-index: 2;
+    }
+    .home__copy {
+        // @include _convertVW(padding-bottom, 44px);
+        padding-bottom: clamp(40px, fluid-type(44px, 1920px), 44px);
+        color: $offwhite;
+        font-size: 25px;
+        text-align: center;
+        max-width: 100%;
+        margin: 0 auto;
+        @include _minWidthTablet {
+            max-width: 55vw;
+        }
+
+        p  {
+            margin:0px;
+        }
+    }
+}

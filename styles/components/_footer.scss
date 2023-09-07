@@ -1,0 +1,13 @@
+@import "../global/parts";
+.footer {
+    @include _Lato;
+    background: $footerblack;
+    color: $footergrey;
+    padding-top: 6.5vw;
+    padding-bottom: 6.3vw;
+}
+
+.footer__copy, .footer__credits {
+    text-align: center;
+    @include _convertVW(padding-top, 60px);
+}

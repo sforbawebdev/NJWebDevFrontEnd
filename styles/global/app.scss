@@ -1,0 +1,50 @@
+@import "./parts";
+@import "./site-loader";
+@import "./forms";
+* {
+    box-sizing: border-box;
+  
+    &:focus {
+      outline: none !important;
+    }
+  
+    &.focus-visible {
+      outline: 1px solid #4d90fe !important;
+      outline: auto #4d90fe !important;
+    }
+  }
+html,
+body {
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+  position: relative;
+}
+
+.page{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+h1, h2, h3, h4, h5, h6 {
+  @include _Poppins;
+  font-weight: bold;
+}
+h1 {
+    font-size: clamp(40px, fluid-type(50px, 1920px), 50px);
+    text-transform: uppercase;
+    margin: 0px;
+    text-align: center;
+}
+
+p, input[type="text"], input[type="tel"], input[type="email"], textarea {
+  @include _Lato;
+  font-weight: normal;
+  font-size: clamp(16px, fluid-type(18px, 1920px), 18px);
+  line-height: 1.4em;
+}

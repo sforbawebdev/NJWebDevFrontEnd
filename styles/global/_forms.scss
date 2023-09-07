@@ -1,0 +1,58 @@
+@import "./parts";
+
+.form {
+    .form__row {
+        display: flex;
+        flex-direction: row;
+        position: relative;   
+    }
+    
+    .form__col {
+        margin-bottom: clamp(20px, _toVW(30), 30px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &.full_width_col{
+            width: 100%;
+        }
+    }
+    label {
+        @include _convertVW(padding-bottom, 10px);
+        color: $lightgrey;
+        font-size: 12px;
+        font-weight: bold;
+
+        padding-left: 0.5vw;
+        text-transform: uppercase;
+    }   
+    input, textarea {
+        @include _boxShadow;
+        background: $white;
+        border: 0px;
+        border-radius:10px;
+    }
+    input {
+        min-height: 45px;
+    }
+    textarea {
+        min-height: 160px;        
+    }
+    .form__submit {
+        display: flex;
+        justify-content: center;
+    }
+    .error-field {
+        color: red;
+        width: 100%;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        text-align: center;
+    }
+    .success__message {
+        font-weight: bold;
+        color: green;
+        text-align: center;
+        width: 100%;
+    }
+}

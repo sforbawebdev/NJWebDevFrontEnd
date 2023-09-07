@@ -1,0 +1,18 @@
+@import "../global/parts";
+
+.header {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    top: 27px;
+    z-index: 50;
+    .header-wrapper {
+        @include _header_container;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

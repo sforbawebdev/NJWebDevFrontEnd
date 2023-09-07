@@ -1,0 +1,24 @@
+@import "../global/parts";
+
+.button {
+    // @include _convertVW(padding-top, 20px);
+    // @include _convertVW(padding-bottom, 16px);
+    // @include _convertVW(padding-left, 30px);
+    // @include _convertVW(padding-right, 30px);
+    padding-top: clamp(15px, _toVW(20), 20px);
+    padding-bottom: clamp(12px, _toVW(16), 16px);
+    padding-right: clamp(20px, _toVW(30), 30px);
+    padding-left: clamp(20px, _toVW(30), 30px);
+    @include _hoverAnimation;
+    @include _Montserrat;
+    background: $blue;
+    border-radius: 20px;
+    color: $white;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    height: fit-content;
+    text-decoration: none;
+    width: fit-content;
+}

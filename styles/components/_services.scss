@@ -1,0 +1,77 @@
+@import "../global/parts";
+
+.services {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.service-list-wrap {
+    @include _container;
+    width: 100%;
+    margin: 0 auto;
+
+    .service-list {
+        padding: 0px;
+        margin:0px;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(31.75%, 1fr));
+        column-gap: 2.375%;
+        row-gap: 2.375%;
+        @include _minWidthMobile {     
+            grid-template-columns: repeat(2, minmax(31.75%, 1fr));
+        }
+        @include _minWidthTablet {     
+            grid-template-columns: repeat(3, minmax(31.75%, 1fr));
+        }
+    }
+    .service-list-item {
+        height: 16.7vw;
+        min-height: 400px;
+        width: 100%;
+    }
+    .service-card  {
+        @include  _boxShadow;
+        align-items: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2.5vw;
+        height: 100%;
+        width: 100%;
+        background: $white;
+
+        .service-card__title {
+            font-size: 24px;
+            margin:0px;
+            margin-bottom: 26px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .service-card-icon {
+            height: 80px;
+            margin-bottom: 30px;
+            width: 80px;
+            svg {
+                width: 100% !important;
+                height: 100%;
+            }
+        }
+
+        .service-card__copy {
+            font-size: 15px;
+            margin:0px;
+            text-align: center;
+            p {
+                margin: 0px;
+            }
+        }
+    }
+}
+
+
+
+
+

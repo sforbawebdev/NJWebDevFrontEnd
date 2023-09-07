@@ -1,0 +1,40 @@
+@import "../global/parts";
+
+.about {
+    // @include _convertVW(padding-top, 115px);
+    // @include _convertVW(padding-bottom, 115px);
+    padding-top: clamp(50px, _toVW(115), 115px);
+    padding-bottom: clamp(50px, _toVW(115), 115px);
+    color: $textgrey;
+    background: $offwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .about__content {
+        @include _container;
+        position: relative;
+        z-index: 2;
+    }
+    .about__title {
+        margin-bottom: 1.8vw;
+        padding-bottom: 1.9vw;
+        @include _titleAfterLine($lightgrey);
+    }
+    .about__copy {
+        text-align: center;
+        max-width: 100%;
+        margin: 0 auto;
+        margin-bottom: 3.6vw;
+        @include _minWidthTablet{
+            max-width: 55vw;
+        }
+        p {
+            margin: 0px;
+        }
+    }
+    .about__cta {
+        @include _convertVW(margin-top, 49px);
+        margin-top: clamp(49px, _toVW(49), 49px);
+    }
+}

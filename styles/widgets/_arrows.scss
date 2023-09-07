@@ -1,0 +1,91 @@
+@import "../global/parts";
+.arrow {
+    @include _hoverAnimation;
+    width: 15px;
+    height: 30px;
+    &.right {
+
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+      
+        span {
+          top: 16px;
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          background-color: $white;
+          display: inline-block;
+          transition: all 0.20s ease-in;
+          perspective: 1000px;
+          backface-visibility: hidden;
+          transform-origin: center right;
+          &:first-of-type {
+            right: 0;
+            transform: rotate(45deg);
+          }
+      
+          &:last-of-type {
+            right: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
+    }
+    &.left {
+
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+      
+        span {
+          top: 16px;
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          background-color: $white;
+          display: inline-block;
+          transition: all 0.20s ease-in;
+          perspective: 1000px;
+          backface-visibility: hidden;
+          transform-origin: left center;
+          &:first-of-type {
+            left: 0;
+            transform: rotate(45deg);
+          }
+      
+          &:last-of-type {
+            left: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
+    }
+    &.down {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        span {
+          top: 16px;
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          background-color: $white;
+          display: inline-block;
+          transition: all 0.20s ease-in;
+          perspective: 1000px;
+          backface-visibility: hidden;
+      
+          &:first-of-type {
+            left: 0;
+            transform: rotate(45deg);
+          }
+      
+          &:last-of-type {
+            right: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
+    }
+}

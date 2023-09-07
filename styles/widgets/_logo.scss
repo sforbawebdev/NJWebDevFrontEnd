@@ -1,0 +1,12 @@
+@import "../global/parts";
+
+.logo {
+    @include _hoverAnimation;
+    width: 60px;
+    display: block;
+    height: 60px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

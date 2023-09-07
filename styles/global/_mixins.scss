@@ -1,0 +1,123 @@
+@import "./fonts";
+@import "./variables";
+
+@mixin _Lato {
+  font-family: "Lato";
+  font-stretch: normal;
+  unicode-range: U+0020-00fe;
+}
+@mixin _Montserrat {
+  font-family: "Montserrat";
+  font-stretch: normal;
+  unicode-range: U+0020-00fe;
+}
+@mixin _Poppins {
+  font-family: "Poppins";
+  font-stretch: normal;
+  unicode-range: U+0020-00fe;
+}
+//LAYOUT
+@function _toVW($size) {
+  @return ($size / 1920) * 100vw;
+}
+@mixin _container {
+  width: 100%;
+  padding: 0 20px;
+  // max-width: 1170px;
+  @include _minWidthMobile {
+    padding: 0 _toVW(60);
+  }
+  @include _minWidthTablet {
+    padding: 0 _toVW(80);
+  }
+  @include _minWidthLarge {
+    padding: 0 _toVW(84);
+  }
+}
+@mixin _header_container {
+  width: 100%;
+  padding: 0 20px;
+  max-width: 90vw;
+  // @include _minWidthMobile {
+  //   padding: 0 _toVW(60);
+  // }
+  // @include _minWidthTablet {
+  //   padding: 0 _toVW(80);
+  // }
+  // @include _minWidthLarge {
+  //   padding: 0 _toVW(84);
+  // }
+}
+////// OTHER BROWSER    
+@mixin _IEOnly {
+    @media all and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+@mixin _SafariOnly {
+    @media not all and (min-resolution:.001dpcm) { 
+        @supports (-webkit-appearance:none) {
+            @content;
+        }
+    }
+}
+@mixin _EdgeOnly {
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+  /* === ACCESSIBILITY === */
+@mixin _accessible {
+    html[class*="accessible"] {
+    @content;
+    }
+}
+
+@mixin _notAccessible {
+    html:not([class*="accessible"]) {
+    @content;
+    }
+}
+
+
+//STYLING
+@mixin _hoverAnimation {
+  transition: opacity 250ms ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+@mixin _boxShadow {
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+}
+
+@mixin _titleAfterLine($color) {
+    position: relative;
+    &:after {
+        content: "";
+        background-color: $color;
+        position: absolute;
+        height: 2px;
+        width: 2.6vw;
+        min-width: 40px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
+
+@mixin _convertVW($property, $size) {
+    #{$property}: ($size/$siteMaxWidth) * 100vw;
+}
+
+@function fluid-type($value-px, $layout-px) {
+  @return ($value-px/$layout-px) * 100vw;
+}
+
+@function px2rem($value-px) {
+  @return($value-px/$root-font-size) *1rem;
+}

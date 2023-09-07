@@ -1,0 +1,39 @@
+@import './global/normalize';
+@import './global/variables';
+@import './global/fonts';
+@import './global/forms';
+@import './global/media';
+@import './global/mixins';
+@import './global/parts';
+@import './global/site-loader';
+@import './global/app';
+
+@import './components/site-loader';
+@import './components/error';
+@import './components/loading';
+@import './components/clients';
+@import './components/footer';
+@import './components/header';
+@import './components/navigation';
+@import './components/projects';
+@import './components/services';
+@import './components/social-list';
+@import './components/title';
+
+@import './components/modals/project-modal';
+@import './components/modals/service-modal';
+
+@import './vendor/slick';
+
+@import './widgets/arrows';
+@import './widgets/button';
+@import './widgets/image';
+@import './widgets/loading';
+@import './widgets/logo';
+@import './widgets/modal';
+
+@import './views/about';
+@import './views/contact';
+@import './views/home';
+@import './views/portfolio';
+@import './views/testimonials';

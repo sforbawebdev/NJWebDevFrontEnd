@@ -1,0 +1,40 @@
+@import "../global/parts";
+
+.social-list-wrap {
+    .social-list {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style-type: none;
+        width: 100%;
+        .social-list__icon {
+
+            width: 20px;
+            height: 20px;
+        }
+        .social-list__item {
+            margin: 0px 20px;
+        }
+        .social-list__link {
+            @include _hoverAnimation;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            svg {
+                height: 20px !important;
+                width: 20px !important;
+                * {
+                    fill: $white;
+    
+                }
+            }
+        }
+    }
+
+}

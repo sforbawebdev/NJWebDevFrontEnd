@@ -1,0 +1,57 @@
+@import "../global/parts";
+.navigation {
+    position: fixed;
+    right: 3.3vw;
+    top: 50%;
+    z-index: 90;
+}
+.navigation-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    list-style: none;
+    
+}
+.navigation-list-item {
+    position: relative;
+
+    &:after {
+        background: $white;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;    
+        cursor: pointer;
+        content: '';
+        display: block;
+        right: -10px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 6px;
+        width: 6px;
+        visibility: visible;
+    }
+    &.active {
+        &:after {
+            border: 1px solid $blue;
+        }
+    }
+}
+.navigation-item {
+    background: $black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: block;
+    border-radius: 10px;
+    font-size: 15px;
+    color: $white;
+    margin-left: auto;
+    padding: 8px;
+    text-decoration: none;
+    width: fit-content;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    transform: translateX(5px);
+    &.active {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
