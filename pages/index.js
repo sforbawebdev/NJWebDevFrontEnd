@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Views from "./views";
 import { useQuery} from '@apollo/client';
-import { loadReCaptcha } from 'react-recaptcha-v3'
+// import { loadReCaptcha } from 'react-recaptcha-v3'
 import Script from 'next/script';
 
 const App = () => {
@@ -19,12 +19,12 @@ const App = () => {
       document.querySelector(".site-loader").className += " site-loader--loaded";
     }
   }
-  useEffect(() => {
-    loadReCaptcha(process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY,() => {console.log("Recaptcha loaded")});
-    sleep(3000).then(() => {
-      hideLoader();
-    });
-  })
+  // useEffect(() => {
+  //   loadReCaptcha(process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY,() => {console.log("Recaptcha loaded")});
+  //   sleep(3000).then(() => {
+  //     hideLoader();
+  //   });
+  // })
 
   const ROUTE_QUERY = queries.ROUTE_QUERY();
   const { loading, error, data } = useQuery(ROUTE_QUERY);
