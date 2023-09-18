@@ -19,12 +19,12 @@ const App = () => {
       document.querySelector(".site-loader").className += " site-loader--loaded";
     }
   }
-  // useEffect(() => {
-  //   loadReCaptcha(process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY,() => {console.log("Recaptcha loaded")});
-  //   sleep(3000).then(() => {
-  //     hideLoader();
-  //   });
-  // })
+  useEffect(() => {
+    // loadReCaptcha(process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY,() => {console.log("Recaptcha loaded")});
+    sleep(3000).then(() => {
+      hideLoader();
+    });
+  })
 
   const ROUTE_QUERY = queries.ROUTE_QUERY();
   const { loading, error, data } = useQuery(ROUTE_QUERY);
@@ -45,8 +45,8 @@ const App = () => {
   return (
     <>
         <NextSeo
-          title="Scott Forba Software Engineer"
-          description="If you're looking for talented and experienced NJ web developers, look no further than Scott Forba! He has eight yers of experience in the industry, and can help you see your project through to completion."
+          title="New Jersey Web Developer"
+          description="If you're looking for a talented and experienced New Jersey web developer, look no further! I have eight years of experience in the industry, and can help you see your project through to completion."
         />
         <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
