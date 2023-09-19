@@ -44,15 +44,6 @@ const ContactForm = () =>{
                 </div>
             </div>
         </Reveal>
-        <Reveal preset={"fadeUp"} delay={100}>
-            <div className="form__row">
-                <div className="form__col full_width_col">
-                    <label htmlFor="phone">PHONE*</label>
-                    <input name="phone" type="tel" {...register('phone', { required: true })} />
-                    {errors && errors.phone && <span className="error-field">This field is required</span>}
-                </div>
-            </div>
-        </Reveal>
         <Reveal preset={"fadeUp"} delay={125}>
             <div className="form__row">
                 <div className="form__col full_width_col">

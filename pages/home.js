@@ -33,7 +33,7 @@ const Home = () => {
             <Waypoint onEnter={handleWayPoint}/>
             <div className="home__content" id={"home"}>
 
-                <Title text={"SCOTT FORBA"} color={"white"} home={true}/>
+                <Title text={"NJ Web Developer"} color={"white"} home={true}/>
                 <Reveal preset={"fadeUp"} delay={150}>
                     <div  className="home__copy" dangerouslySetInnerHTML={{__html:copy}}/>  
                 </Reveal>

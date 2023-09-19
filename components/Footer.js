@@ -9,14 +9,14 @@ const Footer = (props) => {
             <SocialList />
             <Reveal  preset={"fadeUp"} delay={25}>
                 <div className="footer__copy">
-                    Built in Brooklyn, NY
+                    Built in Bloomfield, NJ
                 </div>
             </Reveal>
-            <Reveal  preset={"fadeUp"} delay={50}>
+            {/* <Reveal  preset={"fadeUp"} delay={50}>
             <div className="footer__credits">
                 By: Scott Forba
             </div>
-            </Reveal>
+            </Reveal> */}
         </footer>
     );
 }
