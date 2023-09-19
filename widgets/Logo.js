@@ -1,4 +1,4 @@
-import logo from '../public/images/new_logo.png';
+import logo from '../public/images/nj_logo_2.png';
 import Image from 'next/image';
 
 const Logo = (s)=>{
