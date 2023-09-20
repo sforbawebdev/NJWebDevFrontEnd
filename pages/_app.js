@@ -3,19 +3,20 @@ import Script from 'next/script';
 import {ModalProvider} from '../providers/ModalProvider.js';
 import {AppProvider} from '../providers/AppProvider.js';
 import { ApolloClient, ApolloProvider, InMemoryCache,HttpLink } from '@apollo/client';
+import createApolloClient from '../graphql/apollo-client';
+// const link = new HttpLink({
+//   uri: `${process.env.NEXT_PUBLIC_WP_ENDPOINT}/graphql`,
+//   credentials: 'include',
+// });
 
-const link = new HttpLink({
-  uri: `${process.env.NEXT_PUBLIC_WP_ENDPOINT}/graphql`,
-  credentials: 'include',
-});
-
-const client = new ApolloClient({
-  link: link,
-  cache: new InMemoryCache()
-});
+// const client = new ApolloClient({
+//   link: link,
+//   cache: new InMemoryCache()
+// });
 
 
 function MyApp({ Component, pageProps }) {
+  const client = createApolloClient();
   return (
     <>
       <Script

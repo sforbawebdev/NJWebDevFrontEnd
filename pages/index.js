@@ -8,11 +8,38 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Views from "./views";
-import { useQuery} from '@apollo/client';
-// import { loadReCaptcha } from 'react-recaptcha-v3'
+// import { loadReCaptcha } from 'react-recaptcha-v3';
+import { gql } from '@apollo/client';
 import Script from 'next/script';
+import createApolloClient from '../graphql/apollo-client';
 
-const App = () => {
+export async function getStaticProps() {
+  const client = createApolloClient();
+  const { data } = await client.query({
+    query: gql`
+    query GetRoutes{
+      pages (where:{orderby: {field:MENU_ORDER, order:ASC}}){
+        nodes {
+            title
+            uri
+            menuOrder
+            template {
+              templateName
+            }  
+        }
+      }
+    }
+    `,
+  });
+
+  return {
+    props: {
+      page_data: data?.pages?.nodes,
+    },
+  };
+}
+
+const App = ({page_data}) => {
 
   const hideLoader = () => {
     if (typeof window !== "undefined") {
@@ -26,21 +53,21 @@ const App = () => {
     });
   })
 
-  const ROUTE_QUERY = queries.ROUTE_QUERY();
-  const { loading, error, data } = useQuery(ROUTE_QUERY);
+  // const ROUTE_QUERY = queries.ROUTE_QUERY();
+  // const { loading, error, data } = useQuery(ROUTE_QUERY);
 
-  if(loading) {
-    return (
-      <Loading />
-    );
-  }
-  if(error) {
-    return (
-      <Error />
-    );
-  }
+  // if(loading) {
+  //   return (
+  //     <Loading />
+  //   );
+  // }
+  // if(error) {
+  //   return (
+  //     <Error />
+  //   );
+  // }
 
-  const page_data =  data?.pages?.nodes;
+  // const page_data =  data?.pages?.nodes;
 
   return (
     <>
@@ -50,7 +77,6 @@ const App = () => {
         />
         <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
-            strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
             {`
