@@ -154,7 +154,29 @@ const queries = {
         }
       }
     `;
-    },    
+    },
+    TECH_QUERY: ()=>{
+      return gql`
+      query GetTechnology {
+        technologies {
+          nodes {
+            technology {
+              title
+              copy
+              image {
+                mediaItemUrl
+                altText
+                mediaDetails {
+                  height
+                  width
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+    }, 
     ROUTE_QUERY: () =>{
         return gql`
         query GetRoutes{
@@ -169,6 +191,21 @@ const queries = {
             }
           }
         }
+      `;
+    },
+    TECHNOLOGY_DATA_QUERY: () => {
+      return gql`
+      query GetPageData{
+        pages(where: {title: "TECHNOLOGY"})  {
+            nodes {
+              pageContent {
+                title
+                url
+                copy
+              }
+            }
+        }
+      }
       `;
     }
 }

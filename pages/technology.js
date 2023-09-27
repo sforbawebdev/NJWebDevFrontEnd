@@ -4,13 +4,11 @@ import {AppContext} from '../providers/AppProvider';
 import { useQuery} from '@apollo/client';
 import queries from '../utilities/queries';
 import Loading from '../components/Loading';
-import ProjectList from '../components/ProjectList';
 import Title from '../components/Title';
-// import "../../styles/views/portfolio.scss";
-
-const Portfolio = () => {
+import TechList from '../components/TechList';
+const Technology = () => {
     const context = React.useContext(AppContext);
-    const query = queries.PORTFOLIO_DATA_QUERY();
+    const query = queries.TECHNOLOGY_DATA_QUERY();
     const { loading, error, data } = useQuery(query);
 
     if (loading){
@@ -21,23 +19,22 @@ const Portfolio = () => {
         console.log(error);
         return false;
     }
-    const page_data = data?.pages?.nodes[0]?.pageContent || {};
 
+    const page_data = data?.pages?.nodes[0]?.pageContent || {};
+    console.log(page_data);
     const {title} = page_data;
     const handleWayPoint = () =>{
-        console.log(context.setActiveNav("portfolio"));
+        console.log(context.setActiveNav("technology"));
     }
-
     return (
-        <div className="portfolio page" id={"portfolio"}>
+        <div className="technology page" id={"tech"}>
             <Waypoint onEnter={handleWayPoint}/>
-            <div className="portfolio__content">
-                <Title text={title} color={"white"} home={false}/>
-            </div>  
-            <ProjectList />
+            <div className="tecnology__content">
+                <Title text={title} color={"grey"} home={false}/>
+            </div>
+            <TechList />
         </div>
     );
 }
 
-
-export default Portfolio;
+export default Technology;

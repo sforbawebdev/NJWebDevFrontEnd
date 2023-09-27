@@ -6,6 +6,7 @@ import Portfolio from "./portfolio";
 import Contact from "./contact";
 import Testimonials from "./testimonials";
 import Services from "./services";
+import Technology from "./technology";
 
 const Views = (props) =>{
     const { data, page} = props;
@@ -21,6 +22,8 @@ const Views = (props) =>{
         return <Contact data={data} {...props} />;
     } else if (page === "testimonials") {
         return <Testimonials data={data} {...props} />;
+    } else if (page === "technology") {
+        return <Technology data={data} {...props} />;
     } else {
         return <Default data={data} {...props} />;
     }
