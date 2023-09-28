@@ -1,0 +1,34 @@
+.tech-list-wrap {
+    @include _container;
+    width: 100%;
+    margin: 0 auto;
+
+    .tech-list {
+        padding: 0px;
+        margin:0px;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(31.75%, 1fr));
+        column-gap: 2.375%;
+        row-gap: 5.375%;
+        @include _minWidthMobile {     
+            grid-template-columns: repeat(2, minmax(31.75%, 1fr));
+        }
+        @include _minWidthTablet {     
+            grid-template-columns: repeat(3, minmax(31.75%, 1fr));
+        }
+
+        .tech-list__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+        }
+    }
+}

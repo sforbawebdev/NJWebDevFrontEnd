@@ -53,21 +53,6 @@ const App = ({page_data}) => {
     });
   })
 
-  // const ROUTE_QUERY = queries.ROUTE_QUERY();
-  // const { loading, error, data } = useQuery(ROUTE_QUERY);
-
-  // if(loading) {
-  //   return (
-  //     <Loading />
-  //   );
-  // }
-  // if(error) {
-  //   return (
-  //     <Error />
-  //   );
-  // }
-
-  // const page_data =  data?.pages?.nodes;
 
   return (
     <>
