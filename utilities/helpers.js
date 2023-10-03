@@ -1,4 +1,6 @@
 export const postToCF = async (data) => {
+    const url = `${process.env.NEXT_PUBLIC_WP_ENDPOINT}/wp-json/contact-form-7/v1/contact-forms/${process.env.NEXT_PUBLIC_CONTACT_FORM_ID}/feedback`;
+
     let form_data = new FormData();
     for ( let key in data ) {
         form_data.append(key, data[key]);
@@ -7,19 +9,19 @@ export const postToCF = async (data) => {
         method: 'POST',
         body: form_data
     };
-    
-    let response = await fetch(`${process.env.NEXT_PUBLIC_WP_ENDPOINT}/wp-json/contact-form-7/v1/contact-forms/${process.env.NEXT_PUBLIC_CONTACT_FORM_ID}/feedback`, requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-        if(data && data?.status === "mail_failed") {
-            return data?.status;
-        }
-        return data;
-    })
-    .catch((error) => {
-        console.error("ERROR: ", error);
-        return error;
-    })
+
+    let response = await fetch(url, requestOptions)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if(data && data?.status === "mail_failed") {
+                                return data?.status;
+                            }
+                            return data;
+                        })
+                        .catch((error) => {
+                            console.error("ERROR: ", error);
+                            return error;
+                        })
     return response;
 }
 
