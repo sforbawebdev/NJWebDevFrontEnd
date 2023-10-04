@@ -4,16 +4,7 @@ import {ModalProvider} from '../providers/ModalProvider.js';
 import {AppProvider} from '../providers/AppProvider.js';
 import { ApolloClient, ApolloProvider, InMemoryCache,HttpLink } from '@apollo/client';
 import createApolloClient from '../graphql/apollo-client';
-// const link = new HttpLink({
-//   uri: `${process.env.NEXT_PUBLIC_WP_ENDPOINT}/graphql`,
-//   credentials: 'include',
-// });
-
-// const client = new ApolloClient({
-//   link: link,
-//   cache: new InMemoryCache()
-// });
-
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 
 function MyApp({ Component, pageProps }) {
   const client = createApolloClient();
@@ -32,13 +23,15 @@ function MyApp({ Component, pageProps }) {
           gtag('config', '${process.env.NEXT_PUBLIC_GTAG}');
         `}
       </Script>
-      <AppProvider>        
-      <ModalProvider>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </ModalProvider>
-    </AppProvider>    
+      <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}>
+        <AppProvider>        
+          <ModalProvider>
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+            </ApolloProvider>
+          </ModalProvider>
+      </AppProvider>   
+    </GoogleReCaptchaProvider> 
     </>   
   );
 }

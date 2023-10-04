@@ -6,6 +6,7 @@ import queries from '../utilities/queries';
 import Loading from '../components/Loading';
 import Title from '../components/Title';
 import TechList from '../components/TechList';
+
 const Technology = () => {
     const context = React.useContext(AppContext);
     const query = queries.TECHNOLOGY_DATA_QUERY();
@@ -21,7 +22,7 @@ const Technology = () => {
     }
 
     const page_data = data?.pages?.nodes[0]?.pageContent || {};
-    console.log(page_data);
+
     const {title} = page_data;
     const handleWayPoint = () =>{
         console.log(context.setActiveNav("technology"));

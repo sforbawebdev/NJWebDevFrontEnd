@@ -16,7 +16,6 @@ const TechList = () => {
     const renderList = (data)=>{
         return data && data.map((item, index)=>{
             const {technology } = item || {};
-            console.log(technology);
             const {image, title, copy} = technology || {};
             const {mediaItemUrl, altText, mediaDetails} = image || {};
 

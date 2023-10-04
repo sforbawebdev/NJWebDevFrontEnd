@@ -4,25 +4,29 @@ import Reveal from  '../../widgets/Reveal';
 import React from "react";
 import { useForm } from "react-hook-form";
 import {postToCF} from '../../utilities/helpers';
-// import { ReCaptcha} from 'react-recaptcha-v3'
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import verifyCaptchaAction from '../../utilities/captcha';
 
 const ContactForm = () =>{
-    const recaptcha  = useRef(null);
+    const { executeRecaptcha } = useGoogleReCaptcha();
+
     const [submitState, setSubmitState] = useState(false);
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = async  data => {
-        const response = await postToCF(data);
-        let status = response.status === "mail_sent";
-        setSubmitState(status);
-    };
-    const verifyCallback = () => {
-        console.log("recaptcha loaded");
-    }
 
-    // const updateToken = () => {
-    // // you will get a new token in verifyCallback
-    // this.recaptcha.execute();
-    // }
+    const onSubmit = async  data => {
+            // if the component is not mounted yet
+        if (!executeRecaptcha) {
+            return
+        }
+        const token = await executeRecaptcha("onSubmit");
+        
+        const verified = await verifyCaptchaAction(token);
+        if(verified) {
+            const response = await postToCF(data);
+            let status = response.status === "mail_sent";
+            setSubmitState(status);
+        }
+    };
     return (
 
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -62,27 +66,21 @@ const ContactForm = () =>{
             </div>
         </Reveal>
 
-            {!submitState ? 
-                (
+        {!submitState ? 
+            (
+            <Reveal preset={"fadeUp"} delay={175}>
+                <div className="form__submit">
+                    <Button onClick={handleSubmit(onSubmit)} text={"Submit"}/>
+                </div>
+            </Reveal>
+            ) : (
                 <Reveal preset={"fadeUp"} delay={175}>
-                    <div className="form__submit">
-                        <Button onClick={handleSubmit(onSubmit)} text={"Submit"}/>
+                    <div className="success__message">
+                        Thank you for your Submission!
                     </div>
                 </Reveal>
-                ) : (
-                    <Reveal preset={"fadeUp"} delay={175}>
-                        <div className="success__message">
-                            Thank you for your Submission!
-                        </div>
-                    </Reveal>
-                )
-            }
-        {/* <ReCaptcha
-            ref={recaptcha}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}
-            action='action_name'
-            verifyCallback={verifyCallback}
-        /> */}
+            )
+        }
     </form>
     );
 }
