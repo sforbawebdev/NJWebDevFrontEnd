@@ -5,7 +5,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import {postToCF} from '../../utilities/helpers';
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
-import verifyCaptchaAction from '../../utilities/captcha';
+import {verifyCaptchaAction} from '../../utilities/captcha';
 
 const ContactForm = () =>{
     const { executeRecaptcha } = useGoogleReCaptcha();
@@ -21,6 +21,7 @@ const ContactForm = () =>{
         const token = await executeRecaptcha("onSubmit");
         
         const verified = await verifyCaptchaAction(token);
+
         if(verified) {
             const response = await postToCF(data);
             let status = response.status === "mail_sent";
