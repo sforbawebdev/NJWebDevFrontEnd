@@ -2,6 +2,7 @@ import '../styles/globals.scss'
 import Script from 'next/script';
 import {ModalProvider} from '../providers/ModalProvider.js';
 import {AppProvider} from '../providers/AppProvider.js';
+import { Analytics } from '@vercel/analytics/react';
 import { ApolloClient, ApolloProvider, InMemoryCache,HttpLink } from '@apollo/client';
 import createApolloClient from '../graphql/apollo-client';
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
           </ModalProvider>
       </AppProvider>   
     </GoogleReCaptchaProvider> 
+    <Analytics />
     </>   
   );
 }
